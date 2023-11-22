@@ -5,134 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flexbox playground</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        h2 {
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .box {
-            width: 100px;
-            height: 100px;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .container:not(.n10) .box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .aqua {
-            background-color: aqua;
-        }
-
-        .coral {
-            background-color: coral;
-        }
-
-        .goldenrod {
-            background-color: palegoldenrod;
-        }
-
-        .violetred {
-            background-color: palevioletred;
-        }
-
-        .palegreen {
-            background-color: palegreen;
-        }
-
-        .container {
-            /* una dimensione come max-width permetterà al contenitore di restringersi qualora il viewport scendesse sotto i 900px */
-            max-width: 900px;
-            margin-inline: auto;
-            background-color: #ebebeb;
-            border: 2px solid lightgrey;
-
-            /* con display flex stiamo creando un contesto (contenitore) flex per degli elementi che si comporteranno in maniera "flessibile",
-             gli elementi cercheranno di rimanere sempre sulla stessa linea (sulla direzione del flex), 
-            anche a costo di restringersi se non fosse abbastanza spazio */
-            display: flex;
-            /* (default)
-            flex-direction: row  */
-        }
-
-        .container.n2 {
-            flex-direction: row-reverse
-        }
-
-        .container:where(.n3, .n4, .n5, .n7, .n8) {
-            min-height: 70vh;
-        }
-
-        .container.n3 {
-            flex-direction: column
-        }
-
-        .container.n4 {
-            flex-direction: column-reverse
-        }
-
-        .container.n5 {
-            flex-wrap: wrap;
-            /* align-content stabilisce IN UN CONTENITORE CHE USA WRAP come le righe di elementi verranno distribuite sulla verticale */
-            align-content: center;
-            /* con align-content center abbiamo posizionato il blocco di elementi al centro (senza spazio tra le righe) */
-
-            /* 
-            per altre possibilità riferirsi al link:
-            https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-align-content 
-            */
-        }
-
-        .container.n6 {
-            justify-content: space-between;
-
-            /* 
-            per altre possibilità riferirsi al link:
-            https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-justify-content                        
-            */
-        }
-
-        .container.n7 {
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .container.n8 {
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: flex-end;
-        }
-
-        .container.n9 {
-            align-items: stretch;
-        }
-
-        .container:where(.n9, .n10) .box {
-            height: unset;
-        }
-
-        .container.n10 {
-            align-items: baseline;
-            justify-content: center;
-            padding-block: 3rem;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+    <h2>Flex Containers</h2>
+    <hr>
     <h2>Flex container (direzione row)</h2>
     <div class="container">
         <div class="box aqua">1</div>
@@ -242,6 +120,65 @@
         </div>
     </div>
 
+    <h2>Flex Items</h2>
+    <hr>
+
+    <h2>Flex Item (con order property)</h2>
+    <div class="container n11">
+        <div class="box aqua" style="order: 4">1(4)</div>
+        <div class="box coral" style="order: 3">2(3)</div>
+        <div class="box goldenrod" style="order: -1">3(-1)</div>
+        <div class="box violetred" style="order: 2">4(2)</div>
+        <div class="box palegreen" style="order: 5">5(5)</div>
+    </div>
+
+    <h2>Flex Item (con grow property sui flex-items)</h2>
+    <div class="container n12">
+        <div class="box aqua">1</div>
+        <div class="box coral">2</div>
+        <div class="box goldenrod"></div>
+        <div class="box violetred">4</div>
+        <div class="box palegreen">5</div>
+    </div>
+
+    <h2>Flex Item (con grow property sui flex-items)</h2>
+    <div class="container n13">
+        <div class="box aqua"></div>
+        <div class="box coral"></div>
+        <div class="box goldenrod"></div>
+        <div class="box violetred"></div>
+        <div class="box palegreen"></div>
+    </div>
+
+    <h2>Flex Item (con align-self)</h2>
+    <div class="container n14">
+        <div class="box aqua"></div>
+        <div class="box coral"></div>
+        <div class="box goldenrod"></div>
+        <div class="box violetred"></div>
+        <div class="box palegreen"></div>
+    </div>
+
+    <h2>Flex Item (con justify-self artificioso)</h2>
+    <div class="container n15">
+        <div class="box aqua"></div>
+
+        <span>
+            <div class="box coral"></div>
+            <div class="box goldenrod"></div>
+            <div class="box violetred"></div>
+            <div class="box palegreen"></div>
+        </span>
+    </div>
+
+    <h2>Flex Item (con justify-self artificioso v2 ottimizzata)</h2>
+    <div class="container n16">
+        <div class="box aqua"></div>
+        <div class="box coral"></div>
+        <div class="box goldenrod"></div>
+        <div class="box violetred"></div>
+        <div class="box palegreen"></div>
+    </div>
 </body>
 
 </html>
